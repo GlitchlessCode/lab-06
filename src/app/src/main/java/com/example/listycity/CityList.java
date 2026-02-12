@@ -17,6 +17,7 @@ public class CityList {
      * Adds a new {@link City} to this list if it does not exist
      *
      * @param city The {@link City} to add
+     * @throws IllegalArgumentException The {@link City} is already in this list
      */
     public void add(City city) throws IllegalArgumentException {
         if (cities.contains(city)) {
@@ -44,5 +45,27 @@ public class CityList {
      */
     public boolean hasCity(City city) {
         return cities.contains(city);
+    }
+
+    /**
+     * Removes a city that has already been added to the list, if possible
+     *
+     * @param city The {@link City} to remove
+     * @throws IllegalArgumentException The {@link City} isn't in this list
+     */
+    public void delete(City city) throws IllegalArgumentException {
+        if (!cities.contains(city)) {
+            throw new IllegalArgumentException();
+        }
+        cities.remove(city);
+    }
+
+    /**
+     * Returns the count of {@link City}s in this list
+     *
+     * @return The count of {@link City}s
+     */
+    public int countCities() {
+        return cities.size();
     }
 }
